@@ -9,6 +9,7 @@ public class Product {
 	private double price;
 	private int stored;
 	private int quantity;
+	private String location; // in which building the product is located
 	
 	public Product(int barcode,String Pname,String entryDate,double price,int quantity) {
 		
@@ -69,6 +70,15 @@ public class Product {
 	
 	public String getEntryDate() {
 		return entryDate;	
+	}
+	
+	public void setLocation(String location) {
+		// valid options should be lumber, diy, both
+		this.location = location;
+	}
+	
+	public String getLocation() {
+		return location;
 	}
 	
 }

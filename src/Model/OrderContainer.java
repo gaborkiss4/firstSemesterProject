@@ -26,7 +26,7 @@ public class OrderContainer {
 	public boolean updateOrder(int orderindex,String orderCode,String orderDate,String orderName,String type,boolean paid) 
 	{
 		orders.get(orderindex).setOrderCode(orderCode);
-		orders.get(orderindex).setOrderDate();
+		orders.get(orderindex).setOrderDate(orderDate);
 		orders.get(orderindex).setOrderName(orderName);
 		orders.get(orderindex).setType(type);
 		orders.get(orderindex).setPaid(paid);

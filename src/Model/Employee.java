@@ -10,11 +10,11 @@ public class Employee {
 	
 	private int turnover;
 	
-	public Employee(String name, int id, int salary, Employee boss, String location, boolean management) {
+	public Employee(String name, int id, int salary, String location, boolean management) {
 		this.name = name;
 		this.id = id;
 		this.salary = salary;
-		this.boss = boss;
+		this.boss = null;
 		this.location = location;
 		this.management = management;
 		this.turnover = 0;
@@ -34,6 +34,10 @@ public class Employee {
 	
 	public Employee getBoss() {
 		return boss;
+	}
+	
+	public void setBoss(Employee e) {
+		this.boss = e;
 	}
 	
 	public String getLocation() {

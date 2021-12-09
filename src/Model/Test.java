@@ -31,7 +31,7 @@ public class Test {
 	product.setQuantity(q);
 	System.out.println(product.getStored());
 	
-	
+	System.out.println("test");
 	
 	
 	}

@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 import Model.CustomerContainer;
 import Model.Customer;
-import packageName.Cusomer;
-import packagename.CustomerContainer;
+//import packageName.Cusomer;
+//import packagename.CustomerContainer;
 public class CustomerController {
 
 	
@@ -37,7 +37,7 @@ public class CustomerController {
 	
 	public boolean createCustomer(String name,String address,int postalCode,int number,String city) {
 		
-		if(findByNumber(number) == null)
+		if(CustomerContainer.getInstance().findByNumber(number) == null)
 			return CustomerContainer.getInstance().addCustomer(new Customer(name, address, postalCode, number, city));
 		return false;
 	}

@@ -38,12 +38,12 @@ public class Order {
     	return type;
     }
     
-    public void getOrderDate(String orderDate) {
-    	this.orderDate = orderDate;
+    public String getOrderDate() {
+    	return orderDate;
     }
     
-    public String setOrderDate() {
-    	return orderDate;
+    public void setOrderDate(String orderDate) {
+    	this.orderDate = orderDate;
     }
     
     public void setOrderName(String orderName) {

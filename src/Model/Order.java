@@ -23,50 +23,42 @@ public class Order {
     	
     }
     public void setPaid(boolean paid) {
-    	
     	this.paid = paid;
-    	
     }
+    
     public boolean getPaid() {
-    	
     	return paid;
     }
+    
     public void setType(String type) {
-    	
     	this.type=type;
     }
+    
     public String getType() {
-    	
     	return type;
     }
-    public void getOrderDate(String orderDate) {
     
+    public void getOrderDate(String orderDate) {
     	this.orderDate = orderDate;
     }
     
-public String setOrderDate() {
-    	
+    public String setOrderDate() {
     	return orderDate;
-}
-    public void setOrderName(String orderName) {
-    	
-    	this.orderName = orderName;
-    	
-    }
-    public String getOrderName() {
-    	
-    	return orderName;
-    	
     }
     
-        public void setOrderCode(String orderCode) {
-    	
-        	this.orderCode=orderCode;
-    	
+    public void setOrderName(String orderName) {
+    	this.orderName = orderName;
     }
+    
+    public String getOrderName() {
+    	return orderName;
+    }
+    
+    public void setOrderCode(String orderCode) {
+        this.orderCode=orderCode;
+    }
+    
     public String getOrderCode() {
-    	
-    	
     	return orderCode;
     }
     

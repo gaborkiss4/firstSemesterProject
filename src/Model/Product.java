@@ -40,48 +40,35 @@ public class Product {
 	}
 	
 	public void setPrice(double price) {
-		
 		this.price= price;
-		
-		
 	}
+	
 	public double getPrice() {
-		
-	return price;	
-		
+		return price;
 	}
-public void setBarcode(int barcode) {
-		
-		this.barcode= barcode;
-		
-		
+	
+	public void setBarcode(int barcode) {
+		this.barcode= barcode;	
 	}
+	
 	public int getBarcode() {
-		
-	return barcode;	
-		
+		return barcode;	
 	}
-public void setPname(String Pname) {
-		
+	
+	public void setPname(String Pname) {
 		this.Pname= Pname;
-		
-		
 	}
+	
 	public String getPname() {
-		
-	return Pname;	
-		
+		return Pname;
 	}
-public void setEntryDate(String entryDate) {
-		
+
+	public void setEntryDate(String entryDate) {
 		this.entryDate= entryDate;
-		
-		
 	}
+	
 	public String getEntryDate() {
-		
-	return entryDate;	
-		
+		return entryDate;	
 	}
 	
 }

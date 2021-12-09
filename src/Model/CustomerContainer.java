@@ -71,7 +71,7 @@ public class CustomerContainer {
 		return customerIndex;
 	}
 	
-	public ArrayList<Customer> getAllPeople(){
+	public ArrayList<Customer> getAllCustomers(){
 		return customers;
 	}
 	

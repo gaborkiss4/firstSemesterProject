@@ -46,9 +46,9 @@ public class ContractorController {
 		
 		String newFirm = firm == "" ? contractorContainer.getAllContractors().get(contractorIndex).getFirm() : firm;
 		String newStartDate = startDate == "" ? contractorContainer.getAllContractors().get(contractorIndex).getStartDate() : startDate;
-		int newDirectorName = directorName == 0 ? contractorContainer.getAllContractors().get(contractorIndex).getDirectorName() : directorName;  
+		String newDirectorName = directorName == "" ? contractorContainer.getAllContractors().get(contractorIndex).getDirectorName() : directorName;  
 		int newDirectorNumber = directorNumber == 0 ? contractorContainer.getAllContractors().get(contractorIndex).getDirectorNumber() : directorNumber;
-		String newServiceNumber = serviceNumber == "" ? contractorContainer.getAllContractors().get(contractorIndex).getServiceNumber() : serviceNumber;                      
+		int newServiceNumber = serviceNumber == 0 ? contractorContainer.getAllContractors().get(contractorIndex).getServiceNumber() : serviceNumber;                      
 		
 		
 		
@@ -71,3 +71,5 @@ public class ContractorController {
 	
 	
 }
+
+

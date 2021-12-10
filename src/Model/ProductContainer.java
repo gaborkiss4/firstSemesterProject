@@ -43,7 +43,7 @@ public class ProductContainer {
 		}
 		return false;
 	}
-	public ArrayList<Product> findByPName(String Pname) {      
+	public ArrayList<Product> findByPname(String Pname) {      
 		ArrayList<Product> results = new ArrayList<>();
 		for (Product product : products) {                 //--------------------------------------------------
 			if (product.getPname().toLowerCase().contains(Pname.toLowerCase())) {

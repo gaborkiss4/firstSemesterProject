@@ -1,73 +1,73 @@
 package Controller;
 import java.util.ArrayList;
-import Model.Product;
-import Model.ProductContainer;
-public class ProductController {
 
-	private static ProductController instance = new ProductController();
-	private ProductContainer productContainer;
+import Model.CustomerContainer;
+import Model.Customer;
+//import packageName.Cusomer;
+//import packagename.CustomerContainer;
+public class CustomerController {
+
 	
-	private ProductController() {
-		productContainer = ProductContainer.getInstance();
+	private static CustomerController instance = new CustomerController();
+	private CustomerContainer customerContainer;
+	
+	private CustomerController() {
+		customerContainer = CustomerContainer.getInstance();
 	}
 	
-	public static ProductController getInstance() {
+	public static CustomerController getInstance() {
 		return instance;
 	}
 	
-	public ArrayList<Product> findByName(String Pname) {
+	public ArrayList<Customer> findByName(String name) {
 		
-		return ProductContainer.getInstance().findByPname(Pname); 
+		return CustomerContainer.getInstance().findByName(name); 
 	}
-	public ArrayList<Product> getAllProducts() {
+	public ArrayList<Customer> getAllCustomers() {
 		
-		return ProductContainer.getInstance().getAllProducts(); 
-	}
-	
-	
-	
-	public Product findByBarcode(int barcode) { 
-	
-		return ProductContainer.getInstance().findByBarcode(barcode); 
+		return CustomerContainer.getInstance().getAllCustomers(); 
 	}
 	
-	public boolean createProduct(int barcode,String Pname,String entryDate,double price,int quantity,String location) {
+	
+	
+	public Customer findByPhone(int number) { 
+	
+		return CustomerContainer.getInstance().findByNumber(number); 
+	}
+	
+	public boolean createCustomer(String name,String address,int postalCode,int number,String city) {
 		
-		if(ProductContainer.getInstance().findByBarcode(barcode) == null)
-			return ProductContainer.getInstance().addProduct(new Product(barcode,Pname, entryDate, price, quantity,location));
+		if(CustomerContainer.getInstance().findByNumber(number) == null)
+			return CustomerContainer.getInstance().addCustomer(new Customer(name, address, postalCode, number, city));
 		return false;
 	}
 	
-	public boolean updateProduct(int oldBarcode,int barcode, String Pname,String entryDate,double price,int quantity,String location) {
+	public boolean updateCustomer(int oldNumber, String name,String address,int postalCode,int number,String city) {
 	
-		int proindex = productContainer.getProductIndex(oldBarcode);
+		int customerIndex = customerContainer.getCustomerIndex(oldNumber);
 		
-		int newBarcode = barcode == 0 ? productContainer.getAllProducts().get(proindex).getBarcode() : barcode;
-		String newPname = Pname == "" ? productContainer.getAllProducts().get(proindex).getPname() : Pname;
-		String newEntryDate = entryDate == "" ? productContainer.getAllProducts().get(proindex).getEntryDate() : entryDate;
-		double newPrice = price == 0 ? productContainer.getAllProducts().get(proindex).getPrice() : price;  
-		int newQuantity = quantity == 0 ? productContainer.getAllProducts().get(proindex).getQuantity() : quantity;
-		String newLocation = location == "" ? productContainer.getAllProducts().get(proindex).getLocation() : location;                      
+		String newName = name == "" ? customerContainer.getAllCustomers().get(customerIndex).getName() : name;
+		String newAddress = address == "" ? customerContainer.getAllCustomers().get(customerIndex).getAddress() : address;
+		int newPostalCode = postalCode == 0 ? customerContainer.getAllCustomers().get(customerIndex).getPostalCode() : postalCode;  
+		int newNumber = number == 0 ? customerContainer.getAllCustomers().get(customerIndex).getNumber() : number;
+		String newCity = city == "" ? customerContainer.getAllCustomers().get(customerIndex).getCity() : city;                      
 		
 		
 		
 	
-		if(productContainer.findByBarcode(newBarcode)!= null && oldBarcode!= newBarcode) { 
+		if(customerContainer.findByNumber(newNumber)!= null && oldNumber!= newNumber) { 
 			return false;
 		}
 		
 		
-		return ProductContainer.getInstance().updateProduct(newBarcode, newPname,newEntryDate, newPrice, newQuantity,newLocation);
+		return CustomerContainer.getInstance().updateCustomer(customerIndex, newName,newAddress, newPostalCode, newNumber,newCity);
 	}
 	
-	public boolean deleteProduct(int barcode) {
-		return ProductContainer.getInstance().removeProduct(barcode);
+	public boolean deleteCustomer(int number) {
+		return CustomerContainer.getInstance().removeCustomer(number);
 	}
 	
 	
 	
 	
 }
-   
-
-

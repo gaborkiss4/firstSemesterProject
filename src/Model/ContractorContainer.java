@@ -25,7 +25,7 @@ public class ContractorContainer {
 		
 		return contractors.add(contractor);
 	}
-	public boolean updateCustomer(int conindex,String firm,String startDate,String directorName,int directorNumber,int serviceNumber) 
+	public boolean updateContractor(int conindex,String firm,String startDate,String directorName,int directorNumber,int serviceNumber) 
 	{
 		contractors.get(conindex).setFirm(firm);
 		contractors.get(conindex).setStartDate(startDate);
@@ -72,7 +72,7 @@ public class ContractorContainer {
 		return contractorIndex;
 	}
 	
-	public ArrayList<Contractor> getAllPeople(){
+	public ArrayList<Contractor> getAllContractors(){
 		return contractors;
 	}
 	

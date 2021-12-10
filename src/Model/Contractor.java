@@ -21,6 +21,26 @@ public class Contractor {
 		
 		
 	}
+public void setDirectorName(String directorName) {
+		
+		this.directorName = directorName;
+		
+	}
+	public String getDirectorName() {
+		
+		return directorName;
+		
+	}
+public void setDirectorNumber(int directorNumber) {
+		
+		this.directorNumber = directorNumber;
+		
+	}
+	public int getDirectorNumber() {
+		
+		return directorNumber;
+		
+	}
 	
 	public void Director(int directorNumber,String directorName) {
 		this.directorNumber= directorNumber;

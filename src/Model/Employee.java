@@ -3,32 +3,43 @@ package Model;
 public class Employee {
 	private String name;
 	private int id;
-	private int salary;
+	private double salary;
 	private Employee boss;
 	private String location;
-	private boolean management;
+	private String management;
 	
-	private int turnover;
 	
-	public Employee(String name, int id, int salary, String location, boolean management) {
+	
+	public Employee(String name, int id, double salary, String location, String management) {
 		this.name = name;
 		this.id = id;
 		this.salary = salary;
-		this.boss = null;
 		this.location = location;
 		this.management = management;
-		this.turnover = 0;
+		
 	}
-	
+	public void setName(String name) {
+		
+		this.name= name;
+		
+	}
 	public String getName() {
 		return name;
+	}
+	public void setId(int id) {
+		
+		this.id = id;
 	}
 	
 	public int getId() {
 		return id;
 	}
-	
-	public int getSalary() {
+	public void setSalary(double salary) {
+		
+		this.salary = salary;
+		
+	}
+	public double getSalary() {
 		return salary;
 	}
 	
@@ -40,11 +51,22 @@ public class Employee {
 		this.boss = e;
 	}
 	
+	public void setLocation(String location) {
+		
+		this.location= location;
+		
+	}
+	
 	public String getLocation() {
 		return location;
 	}
 	
-	public boolean isManagement() {
+	public void setManagement(String management) {
+		
+		this.management=management;
+	}
+	
+	public String getManagement() {
 		return management;
 	}
 }

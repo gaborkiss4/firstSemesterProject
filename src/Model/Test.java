@@ -21,7 +21,7 @@ public class Test {
 	System.out.println("price");
 	pr=scanner.nextDouble();
 	
-	product = new Product( b, p, e, pr,q);
+	product = new Product( b, p, e, pr,q,"both");
 	product.setQuantity(q);
 	
 	System.out.println(product.getStored());

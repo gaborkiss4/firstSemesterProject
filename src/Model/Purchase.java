@@ -40,4 +40,9 @@ public class Purchase {
 	public double getPrice() {
 		return calculatePrice();
 	}
+	
+	public void addToPurchase(Product product, int quantity) {
+		//probably needs some form of checking if the product is available
+		items.add(new PurchaseItem(product, quantity));
+	}
 }

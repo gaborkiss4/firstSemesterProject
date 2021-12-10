@@ -23,13 +23,14 @@ public class ProductContainer {
 		
 		return products.add(product);
 	}
-	public boolean updateProduct(int proindex,int barcode,String Pname,String entryDate,double price,int quantity) 
+	public boolean updateProduct(int proindex,int barcode,String Pname,String entryDate,double price,int quantity,String location) 
 	{
 		products.get(proindex).setBarcode(barcode);
 		products.get(proindex).setPname(Pname);
 		products.get(proindex).setEntryDate(entryDate);
 		products.get(proindex).setPrice(price);
 		products.get(proindex).setQuantity(quantity);
+		products.get(proindex).setLocation(location);
 		return true;
 	}
 	public boolean removeProduct(int barcode) {

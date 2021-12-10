@@ -9,15 +9,16 @@ public class Product {
 	private double price;
 	private int stored;
 	private int quantity;
-	private String location; // in which building the product is located
+	private String location;
 	
-	public Product(int barcode,String Pname,String entryDate,double price,int quantity) {
+	public Product(int barcode,String Pname,String entryDate,double price,int quantity,String lcoation) {
 		
 		this.barcode = barcode;
 		this.Pname = Pname;
 		this.entryDate = entryDate;
 		this.price = price;
 		this.quantity = quantity;
+		this.location = location;
 		
 		
 	}
@@ -41,37 +42,49 @@ public class Product {
 	}
 	
 	public void setPrice(double price) {
+		
 		this.price= price;
+		
+		
 	}
-	
 	public double getPrice() {
-		return price;
+		
+	return price;	
+		
 	}
-	
-	public void setBarcode(int barcode) {
-		this.barcode= barcode;	
+public void setBarcode(int barcode) {
+		
+		this.barcode= barcode;
+		
+		
 	}
-	
 	public int getBarcode() {
-		return barcode;	
+		
+	return barcode;	
+		
 	}
-	
-	public void setPname(String Pname) {
+public void setPname(String Pname) {
+		
 		this.Pname= Pname;
+		
+		
 	}
-	
 	public String getPname() {
-		return Pname;
+		
+	return Pname;	
+		
 	}
-
-	public void setEntryDate(String entryDate) {
+public void setEntryDate(String entryDate) {
+		
 		this.entryDate= entryDate;
+		
+		
 	}
-	
 	public String getEntryDate() {
-		return entryDate;	
+		
+	return entryDate;	
+		
 	}
-	
 	public void setLocation(String location) {
 		// valid options should be lumber, diy, both
 		this.location = location;
@@ -80,5 +93,6 @@ public class Product {
 	public String getLocation() {
 		return location;
 	}
+	
 	
 }

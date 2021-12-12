@@ -1,8 +1,13 @@
 package Model;
 import java.util.Scanner;
+import UI.MainMenu;
+import UI.Menu;
 public class Test {
 
 	public static void main(String[]args ) {
+	
+		Menu mainMenu = new MainMenu();
+		mainMenu.setActive();
 	
 	Product product;
 	double pr;

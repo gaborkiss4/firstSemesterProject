@@ -1,13 +1,8 @@
 package Model;
 import java.util.Scanner;
-import UI.MainMenu;
-import UI.Menu;
 public class Test {
 
 	public static void main(String[]args ) {
-	
-		Menu mainMenu = new MainMenu();
-		mainMenu.setActive();
 	
 	Product product;
 	double pr;
@@ -26,7 +21,7 @@ public class Test {
 	System.out.println("price");
 	pr=scanner.nextDouble();
 	
-	product = new Product( b, p, e, pr,q,"both");
+	product = new Product( b, p, e, pr,q, e);
 	product.setQuantity(q);
 	
 	System.out.println(product.getStored());
@@ -36,7 +31,7 @@ public class Test {
 	product.setQuantity(q);
 	System.out.println(product.getStored());
 	
-	System.out.println("test");
+	
 	
 	
 	}

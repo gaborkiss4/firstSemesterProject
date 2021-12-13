@@ -10,8 +10,9 @@ public class Product {
 	private int stored;
 	private int quantity;
 	private String location;
+	private int minus;
 	
-	public Product(int barcode,String Pname,String entryDate,double price,int quantity,String lcoation) {
+	public Product(int barcode,String Pname,String entryDate,double price,int quantity,String location) {
 		
 		this.barcode = barcode;
 		this.Pname = Pname;
@@ -92,6 +93,19 @@ public void setEntryDate(String entryDate) {
 	
 	public String getLocation() {
 		return location;
+	}
+	public void setMinus(int minus) {
+		getStored();
+		this.minus=minus;
+		stored= stored-minus;
+			setStored(stored);
+		
+		
+	}
+	public double getMinus() {
+		
+		return minus;
+		
 	}
 	
 	

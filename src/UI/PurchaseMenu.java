@@ -6,10 +6,16 @@ public class PurchaseMenu extends Menu{
 	}
 	public void setActive() {
 		displayMenu();
-		choices.add(new MainMenu());
+		addChoice(new MainMenu()); //1
+		addChoice(new ActivePurchaseMenu());
 		displayChoices();
+		
 	}
 	public void displayMenu() {
 		System.out.println("This is the purchase menu.");
+	}
+	
+	protected void displayUniqueChoices() {
+		//empty
 	}
 }

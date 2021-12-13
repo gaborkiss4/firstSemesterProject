@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Menu {
-	protected ArrayList<Menu> choices;
+	private ArrayList<Menu> choices;
 	private String name;
 	
 	protected Menu() {
@@ -17,12 +17,18 @@ public abstract class Menu {
 		choices.add(menu);
 	}
 	
-	protected void displayChoices() {
+	protected int displayChoices() {
 		System.out.println("Please enter the number corresponding to your choice:");
 		for(int i=0; i<choices.size(); i++) {
 			System.out.println((i+1) + " " + choices.get(i).getName());
 		}
-		choices.get(choice()).setActive();
+		displayUniqueChoices();
+		int c = choice();
+		if(c<choices.size()) {
+			choices.get(c).setActive();
+			return 0;
+		}
+		return c+1;
 	}
 	
 	protected void setName(String name) {
@@ -40,4 +46,6 @@ public abstract class Menu {
 	}
 	
 	public abstract void setActive();
+	
+	protected abstract void displayUniqueChoices();
 }

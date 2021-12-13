@@ -9,6 +9,7 @@ public class Test {
 		Menu mainMenu = new MainMenu();
 		mainMenu.setActive();
 	
+	/*
 	Product product;
 	double pr;
 	int q,b;
@@ -37,7 +38,7 @@ public class Test {
 	System.out.println(product.getStored());
 	
 	System.out.println("test");
-	
+	*/
 	
 	}
 }

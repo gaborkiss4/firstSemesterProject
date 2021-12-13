@@ -6,11 +6,15 @@ public class MainMenu extends Menu{
 	}
 	public void setActive() {
 		displayMenu();
-		choices.add(new PurchaseMenu());
+		addChoice(new PurchaseMenu());
 		displayChoices();
 	}
 	
 	public void displayMenu() {
 		System.out.println("This is the main menu.");
+	}
+	
+	protected void displayUniqueChoices() {
+		//empty
 	}
 }

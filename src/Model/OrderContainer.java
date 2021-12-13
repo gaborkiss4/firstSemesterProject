@@ -23,16 +23,17 @@ public class OrderContainer {
 		
 		return orders.add(order);
 	}
-	public boolean updateOrder(int orderindex,String orderCode,String orderDate,String orderName,String type,boolean paid) 
+	public boolean updateOrder(int orderindex,int orderCode,String orderDate,String orderName,String type,String paid) 
 	{
 		orders.get(orderindex).setOrderCode(orderCode);
 		orders.get(orderindex).setOrderDate(orderDate);
 		orders.get(orderindex).setOrderName(orderName);
 		orders.get(orderindex).setType(type);
 		orders.get(orderindex).setPaid(paid);
+		
 		return true;
 	}
-	public boolean removeOrder(String orderCode) {
+	public boolean removeOrder(int orderCode) {
 		Iterator<Order> orderIterator = orders.iterator();  //--------------------------------------------------
 		
 		while(orderIterator.hasNext()) {
@@ -53,7 +54,7 @@ public class OrderContainer {
 		return results;
 	}
 	
-	public Order findByOrderCode(String orderCode) {       //--------------------------------------------------
+	public Order findByOrderCode(int orderCode) {       //--------------------------------------------------
 		for (Order order : orders) {
 			if (order.getOrderCode() == orderCode) {
 				return order;
@@ -62,13 +63,13 @@ public class OrderContainer {
 		return null;
 	}
 	
-	public int getOrderIndex(String orderCode) { //--------------------------------------------------
-		int orderOrderindex = -1;
+	public int getOrderIndex(int orderCode) { //--------------------------------------------------
+		int OrderIndex = -1;
 		for(int i = 0; i < orders.size(); i++) {
 			if(orders.get(i).getOrderCode() == orderCode)  //gets an index of a person
-				orderOrderindex = i;
+				OrderIndex = i;
 		}
-		return orderOrderindex;
+		return OrderIndex;
 	}
 	
 	public ArrayList<Order> getAllOrders(){

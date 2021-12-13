@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import Model.Contractor;
 import Model.ContractorContainer;
 
+
 public class ContractorController {
 
 	private static ContractorController instance = new ContractorController();

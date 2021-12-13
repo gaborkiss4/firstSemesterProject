@@ -1,4 +1,4 @@
-package UI;
+/*package UI;
 
 import java.util.Scanner;
 import Controller.ProductController;
@@ -42,3 +42,4 @@ public class ActivePurchaseMenu extends Menu{
 	}
 	
 }
+*/

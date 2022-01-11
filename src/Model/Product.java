@@ -39,7 +39,7 @@ public class Product {
 	}
 	
 	public int getStored() {
-		return  stored;
+		return stored;
 	}
 	
 	public void setPrice(double price) {

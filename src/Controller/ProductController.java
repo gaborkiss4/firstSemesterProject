@@ -24,7 +24,18 @@ public class ProductController {
 		return ProductContainer.getInstance().getAllProducts(); 
 	}
 	
-	
+	public String[][] getTable(){
+		ArrayList<Product> products = ProductContainer.getInstance().getAllProducts();
+		int n = products.size();
+		String[][] table = new String[n][4];
+		for(int i=0; i<n; i++) {
+			table[i][0] = products.get(i).getPname();
+			table[i][1] = Double.toString(products.get(i).getPrice());
+			table[i][2] = Integer.toString(products.get(i).getStored());
+			table[i][3] = Integer.toString(products.get(i).getBarcode());
+		}
+		return table;
+	}
 	
 	public Product findByBarcode(int barcode) { 
 	

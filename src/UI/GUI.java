@@ -13,7 +13,7 @@ public class GUI {
 		frame = new JFrame();
 		frame.setSize(800,600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("amogus 2");
+		frame.setTitle("Sales Software");
 		frame.setLayout(null);
 		
 		JPanel menuPanel = new GUIMenuPanel(this);

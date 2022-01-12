@@ -1,7 +1,6 @@
 package UI;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
@@ -17,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Controller.CustomerController;
 import Controller.OrderController;
 import Controller.ProductController;
 
@@ -24,6 +24,7 @@ public class GUICreate extends JPanel{
 
 	private ProductController productController = ProductController.getInstance();
 	private OrderController orderController = OrderController.getInstance();
+	private CustomerController customerController = CustomerController.getInstance();
 	private GUI frame;
 	private GUIOptionPanel optionPanel;
 	private Date date = new Date();
@@ -37,7 +38,10 @@ public class GUICreate extends JPanel{
 		String[] options = {"Add Offer","Add Customer","Add Contractor","Add Product"};
 		optionPanel = new GUIOptionPanel(options);
 		optionPanel.getButton(0).addActionListener(e -> addOffer());
+		optionPanel.getButton(1).addActionListener(f -> addCustomer());
 		optionPanel.getButton(3).addActionListener(h -> addProduct());
+		//remove when implemented
+		optionPanel.getButton(2).setEnabled(false);
 		frame.setCurrentOptionBar(optionPanel);
 	}
 	private void addOffer() {
@@ -101,6 +105,69 @@ public class GUICreate extends JPanel{
 		addOfferPanel.add(quantityText);
 		addOfferPanel.add(quantityField);
 		addOfferPanel.add(sellButton);
+	}
+	
+	private void addCustomer() {
+		JPanel addCustomerPanel = new JPanel();
+		frame.setCurrentlyActive(addCustomerPanel);
+		addCustomerPanel.setBackground(new Color(0xfdf6d6));
+		addCustomerPanel.setBounds(0, 80, 800, 520);
+		JLabel customerNameText = new JLabel("Name:", SwingConstants.RIGHT);
+		JLabel addressText = new JLabel("Address:", SwingConstants.RIGHT);
+		JLabel postcodeText = new JLabel("Postcode:", SwingConstants.RIGHT);
+		JLabel cityText = new JLabel("City:", SwingConstants.RIGHT);
+		JLabel phoneText = new JLabel("Phone Number:", SwingConstants.RIGHT);
+		customerNameText.setBounds(0, 50, 190, 30);
+		addressText.setBounds(0, 90, 190, 30);
+		postcodeText.setBounds(0, 130, 190, 30);
+		cityText.setBounds(0, 170, 190, 30);
+		phoneText.setBounds(0, 210, 190, 30);
+		addCustomerPanel.add(customerNameText);
+		addCustomerPanel.add(addressText);
+		addCustomerPanel.add(postcodeText);
+		addCustomerPanel.add(cityText);
+		addCustomerPanel.add(phoneText);
+		JTextField customerName = new JTextField();
+		JTextField address = new JTextField();
+		JTextField postcode = new JTextField();
+		JTextField city = new JTextField();
+		JTextField phone = new JTextField();
+		JButton addButton = new JButton("Add");
+		customerName.setBounds(200, 50, 500, 30);
+		address.setBounds(200, 90, 500, 30);
+		postcode.setBounds(200, 130, 500, 30);
+		city.setBounds(200, 170, 500, 30);
+		phone.setBounds(200, 210, 500, 30);
+		addButton.setBounds(600, 250, 100, 30);
+		addCustomerPanel.add(customerName);
+		addCustomerPanel.add(address);
+		addCustomerPanel.add(postcode);
+		addCustomerPanel.add(city);
+		addCustomerPanel.add(phone);
+		addCustomerPanel.add(addButton);
+		addButton.addActionListener(e -> {
+			if(customerName.getText().equals("") || address.getText().equals("") || postcode.getText().equals("") || city.getText().equals("") || phone.getText().equals("")) {
+				JOptionPane.showMessageDialog(null,"Customer could not be added due to missing information.","Empty fields!",JOptionPane.ERROR_MESSAGE);
+			} else {
+				boolean error = false;
+				for(int i = 0; i < postcode.getText().length(); i++) {
+					if(postcode.getText().charAt(i)<48 || postcode.getText().charAt(i)>57) error = true;
+				}
+				for(int i = 0; i < phone.getText().length(); i++) {
+					if(phone.getText().charAt(i)<48 || phone.getText().charAt(i)>57) error = true;
+				}
+				if(error) JOptionPane.showMessageDialog(null,"Invalid information provided!","Invalid input!",JOptionPane.ERROR_MESSAGE);
+				else {
+					customerController.createCustomer(customerName.getText(), address.getText(), Integer.valueOf(postcode.getText()), Integer.valueOf(phone.getText()), city.getText());
+					JOptionPane.showMessageDialog(null, "Product successfully added.", "Success!", JOptionPane.PLAIN_MESSAGE);
+					customerName.setText("");
+					address.setText("");
+					postcode.setText("");
+					city.setText("");
+					phone.setText("");
+				}
+			}
+		});
 	}
 	
 	private void addProduct() {

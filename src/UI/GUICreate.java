@@ -16,22 +16,25 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Controller.ContractorController;
 import Controller.CustomerController;
 import Controller.OrderController;
 import Controller.ProductController;
 
-public class GUICreate extends JPanel{
+public class GUICreate{
 
 	private ProductController productController = ProductController.getInstance();
 	private OrderController orderController = OrderController.getInstance();
 	private CustomerController customerController = CustomerController.getInstance();
+	private ContractorController contractorController = ContractorController.getInstance();
 	private GUI frame;
 	private GUIOptionPanel optionPanel;
 	private Date date = new Date();
-	private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
+	private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 	
 	public GUICreate(GUI frame) {
 		this.frame = frame;
+		frame.removeCurrentlyActive();
 		createOptionPanel();
 	}
 	private void createOptionPanel() {
@@ -39,9 +42,8 @@ public class GUICreate extends JPanel{
 		optionPanel = new GUIOptionPanel(options);
 		optionPanel.getButton(0).addActionListener(e -> addOffer());
 		optionPanel.getButton(1).addActionListener(f -> addCustomer());
+		optionPanel.getButton(2).addActionListener(g -> addContractor());
 		optionPanel.getButton(3).addActionListener(h -> addProduct());
-		//remove when implemented
-		optionPanel.getButton(2).setEnabled(false);
 		frame.setCurrentOptionBar(optionPanel);
 	}
 	private void addOffer() {
@@ -166,6 +168,84 @@ public class GUICreate extends JPanel{
 					city.setText("");
 					phone.setText("");
 				}
+			}
+		});
+	}
+	
+	private void addContractor() {
+		JPanel addContractorPanel = new JPanel();
+		frame.setCurrentlyActive(addContractorPanel);
+		addContractorPanel.setBackground(new Color(0xfdf6d6));
+		addContractorPanel.setBounds(0, 80, 800, 520);
+		JLabel firmNameText = new JLabel("Firm Name:", SwingConstants.RIGHT);
+		JLabel startingDateText = new JLabel("Starting Date:", SwingConstants.RIGHT);
+		JLabel directorNameText = new JLabel("Director's Name:", SwingConstants.RIGHT);
+		JLabel directorNumberText = new JLabel("Director's Number:", SwingConstants.RIGHT);
+		JLabel firmNumberText = new JLabel("Firm's Number:", SwingConstants.RIGHT);
+		firmNameText.setBounds(0, 50, 190, 30);
+		startingDateText.setBounds(0, 90, 190, 30);
+		directorNameText.setBounds(0, 130, 190, 30);
+		directorNumberText.setBounds(0, 170, 190, 30);
+		firmNumberText.setBounds(0, 210, 190, 30);
+		addContractorPanel.add(firmNameText);
+		addContractorPanel.add(startingDateText);
+		addContractorPanel.add(directorNameText);
+		addContractorPanel.add(directorNumberText);
+		addContractorPanel.add(firmNumberText);
+		JTextField firmName = new JTextField();
+		JTextField startingDate = new JTextField();
+		JTextField directorName = new JTextField();
+		JTextField directorNumber = new JTextField();
+		JTextField firmNumber = new JTextField();
+		JButton addButton = new JButton("Add");
+		firmName.setBounds(200, 50, 500, 30);
+		startingDate.setBounds(200, 90, 500, 30);
+		directorName.setBounds(200, 130, 500, 30);
+		directorNumber.setBounds(200, 170, 500, 30);
+		firmNumber.setBounds(200, 210, 500, 30);
+		addButton.setBounds(600, 250, 100, 30);
+		addContractorPanel.add(firmName);
+		addContractorPanel.add(startingDate);
+		addContractorPanel.add(directorName);
+		addContractorPanel.add(directorNumber);
+		addContractorPanel.add(firmNumber);
+		addContractorPanel.add(addButton);
+		addButton.addActionListener(e -> {
+			if(firmName.getText().equals("") || startingDate.getText().equals("") || directorName.getText().equals("") || directorNumber.getText().equals("") || firmNumber.getText().equals("")) {
+				JOptionPane.showMessageDialog(null,"Contractor could not be added due to missing information.","Empty fields!",JOptionPane.ERROR_MESSAGE);
+			} else {
+				boolean error = false;
+				for(int i = 0; i < directorNumber.getText().length(); i++) {
+					if(directorNumber.getText().charAt(i)<48 || directorNumber.getText().charAt(i)>57) error = true;
+				}
+				for(int i = 0; i < firmNumber.getText().length(); i++) {
+					if(firmNumber.getText().charAt(i)<48 || firmNumber.getText().charAt(i)>57) error = true;
+				}
+				if(error) JOptionPane.showMessageDialog(null,"Invalid information provided!","Invalid input!",JOptionPane.ERROR_MESSAGE);
+				else {
+					error = false;
+					if(startingDate.getText().length() != 10) error = true;
+					else {
+						for(int i=0; i<10; i++) {  //checks for numbers and dashes in the date
+							if(i==2 || i==5) {
+								if(startingDate.getText().charAt(i)!=45) error = true;
+								i++;
+							}
+							if(startingDate.getText().charAt(i)<48 || startingDate.getText().charAt(i)>57) error = true;
+						}
+					}
+					if(error) JOptionPane.showMessageDialog(null,"Please enter the date in the correct format (dd-MM-yyyy)!","Invalid date!",JOptionPane.ERROR_MESSAGE);
+					else {
+						contractorController.createContractor(firmName.getText(), startingDate.getText(), directorName.getText(), Integer.valueOf(directorNumber.getText()), Integer.valueOf(firmNumber.getText()));
+						JOptionPane.showMessageDialog(null, "Contractor successfully added.", "Success!", JOptionPane.PLAIN_MESSAGE);
+						firmName.setText("");
+						startingDate.setText("");
+						directorName.setText("");
+						directorNumber.setText("");
+						firmNumber.setText("");
+					}
+				}
+				
 			}
 		});
 	}

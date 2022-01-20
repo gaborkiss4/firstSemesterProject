@@ -25,12 +25,17 @@ public class GUI {
 	}
 	
 	public void setCurrentlyActive(JPanel window) {
-		if(currentlyActive != null) {
-			frame.remove(currentlyActive);
-		}
+		removeCurrentlyActive();
 		currentlyActive = window;
 		frame.add(currentlyActive);
 		frame.setVisible(true);
+	}
+	
+	public void removeCurrentlyActive() {
+		if(currentlyActive != null) {
+			frame.remove(currentlyActive);
+			frame.setVisible(true);
+		}
 	}
 	
 	public void setCurrentOptionBar(GUIOptionPanel optionBar) {

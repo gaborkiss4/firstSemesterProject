@@ -27,7 +27,19 @@ public class ContractorController {
 		return ContractorContainer.getInstance().getAllContractors(); 
 	}
 	
-	
+	public String[][] getTable(){
+		ArrayList<Contractor> contractors = ContractorContainer.getInstance().getAllContractors();
+		int n = contractors.size();
+		String[][] table = new String[n][5];
+		for(int i=0; i<n; i++) {
+			table[i][0] = contractors.get(i).getFirm();
+			table[i][1] = contractors.get(i).getStartDate();
+			table[i][2] = contractors.get(i).getDirectorName();
+			table[i][3] = Integer.toString(contractors.get(i).getDirectorNumber());
+			table[i][4] = Integer.toString(contractors.get(i).getServiceNumber());
+		}
+		return table;
+	}
 	
 	public Contractor findByServiceNumber(int serviceNumber) { 
 	

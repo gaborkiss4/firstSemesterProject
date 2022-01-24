@@ -23,6 +23,7 @@ public class GUIContractors{
 		this.frame = frame;
 		frame.removeCurrentlyActive();
 		createOptionPanel();
+		database();
 	}
 	
 	private void createOptionPanel() {
@@ -126,8 +127,12 @@ public class GUIContractors{
 			int directorPhone = Integer.valueOf(directorPhoneField.getText());
 			int firmPhone = Integer.valueOf(firmPhoneField.getText());
 			contractorController.updateContractor(oldFirmNumber, firm, since, director, directorPhone, firmPhone);
-			contractorTable.revalidate();
-			contractorTable.doLayout();
+			database(); //very bad solution, but couldn't get the table to refresh any other way
+		});
+		deleteButton.addActionListener(f -> {
+			int oldFirmNumber = Integer.valueOf((String)contractorTable.getValueAt(contractorTable.getSelectedRow(), 4));
+			contractorController.deleteContractor(oldFirmNumber);
+			database(); //same here
 		});
 	}
 }

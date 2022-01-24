@@ -1,5 +1,8 @@
 package Controller;
 import java.util.ArrayList;
+
+import Model.Contractor;
+import Model.ContractorContainer;
 import Model.Order;
 import Model.OrderContainer;
 public class OrderController {
@@ -24,7 +27,19 @@ public class OrderController {
 		return OrderContainer.getInstance().getAllOrders(); 
 	}
 	
-	
+	public String[][] getTable(){
+		ArrayList<Order> orders = OrderContainer.getInstance().getAllOrders();
+		int n = orders.size();
+		String[][] table = new String[n][5];
+		for(int i=0; i<n; i++) {
+			table[i][0] = Integer.toString(orders.get(i).getOrderCode());
+			table[i][1] = orders.get(i).getOrderDate();
+			table[i][2] = orders.get(i).getOrderName();
+			table[i][3] = orders.get(i).getType();
+			table[i][4] = orders.get(i).getPaid();
+		}
+		return table;
+	}
 	
 	public Order findByOrderCode(int orderCode) { 
 	

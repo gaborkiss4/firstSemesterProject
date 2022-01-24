@@ -31,7 +31,6 @@ public class GUIMenuPanel extends JPanel{
 		this.setBackground(new Color(0x808080));
 		
 		//remove these when the menus are implemented
-		ordersMenuButton.setEnabled(false);
 		productsMenuButton.setEnabled(false);
 		customersMenuButton.setEnabled(false);
 		deliveryMenuButton.setEnabled(false);
@@ -39,5 +38,6 @@ public class GUIMenuPanel extends JPanel{
 		
 		createMenuButton.addActionListener(e -> new GUICreate(frame));
 		contractorsMenuButton.addActionListener(f -> new GUIContractors(frame));
+		ordersMenuButton.addActionListener(g -> new GUIOrders(frame));
 	}
 }

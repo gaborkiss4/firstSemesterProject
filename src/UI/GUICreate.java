@@ -300,6 +300,11 @@ public class GUICreate{
 					if(barcode.getText().charAt(i)<48 || barcode.getText().charAt(i)>57) error = true;
 				}
 				for(int i = 0; i < price.getText().length(); i++) {
+					int dots = 0;
+					if(price.getText().charAt(i)=='.' && dots==0) {
+						i++;
+						dots++;
+					}
 					if(price.getText().charAt(i)<48 || price.getText().charAt(i)>57) error = true;
 				}
 				for(int i = 0; i < quantity.getText().length(); i++) {

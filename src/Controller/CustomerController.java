@@ -2,6 +2,8 @@ package Controller;
 import java.util.ArrayList;
 
 import Model.CustomerContainer;
+import Model.Product;
+import Model.ProductContainer;
 import Model.Customer;
 //import packageName.Cusomer;
 //import packagename.CustomerContainer;
@@ -28,7 +30,19 @@ public class CustomerController {
 		return CustomerContainer.getInstance().getAllCustomers(); 
 	}
 	
-	
+	public String[][] getTable(){
+		ArrayList<Customer> customers = CustomerContainer.getInstance().getAllCustomers();
+		int n = customers.size();
+		String[][] table = new String[n][5];
+		for(int i=0; i<n; i++) {
+			table[i][0] = customers.get(i).getName();
+			table[i][1] = customers.get(i).getAddress();
+			table[i][2] = Integer.toString(customers.get(i).getPostalCode());
+			table[i][3] = Integer.toString(customers.get(i).getNumber());
+			table[i][4] = customers.get(i).getCity();
+		}
+		return table;
+	}
 	
 	public Customer findByPhone(int number) { 
 	
